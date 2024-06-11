@@ -44,12 +44,12 @@ export const getAllCategory = async () => {
 
 
 
-export const saveProduct = async (categoryData) => {
+export const saveProduct = async (productData) => {
   try {
     //  const response = await axios.post(`${API_URL}/cat`, categoryData);
-     const response = await axios.post(`${API_URL}/categories`, categoryData, {
+     const response = await axios.post(`${API_URL}/products`, productData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/json'
       }
     });
     return null //response.data;
