@@ -88,7 +88,6 @@ const CategoryForm = () => {
      
  
       setLoader(true)
-    console.log('fileList[0]?.originFileObj?.files',fileList[0]?.originFileObj?.File)
 
       const formDatas = new FormData();
       formDatas.append('name', formData?.categoryName);

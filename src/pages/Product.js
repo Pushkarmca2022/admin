@@ -4,21 +4,27 @@ import './product.css'
 import { useNavigate } from 'react-router-dom';
 import { getAllProduct } from '../Api';
 import ActionDropdown from '../components/ActionDropdown';
-import { Pagination } from 'antd';
+import { Pagination, Spin } from 'antd';
 
 const Product = () => {
 const navigate=useNavigate()
 const [products,setProducts]=useState([])
 console.log('products',products)
 
+const [loader,setLoader] =useState(false);
+
 const fetchalldata=async()=>{
   
   try{
+    setLoader(true)
   let data=await  getAllProduct();
   setProducts(data)
+  setLoader(false)
   console.log(data)
   }catch(e){
     console.log(e)
+  setLoader(false)
+
     setProducts([])
 
   }
@@ -77,6 +83,8 @@ const fetchalldata=async()=>{
                     </div>
                 </div>
             </div>
+      <Spin spinning={loader}>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -116,7 +124,7 @@ const fetchalldata=async()=>{
                         
                 </tbody>
             </table>
-            
+            </Spin>
             <div className='pagination'>
             <Pagination
         total={products.length}

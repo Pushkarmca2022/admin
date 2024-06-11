@@ -7,19 +7,25 @@ import { carousalone} from '../assets';
 
 import ActionDropdown from '../components/ActionDropdown';
 import { Pagination } from 'antd';
+import { Spin } from 'antd';
+
 const Category = () => {
 const navigate=useNavigate()
 const [categories,setCategories]=useState([])
 console.log('categories',categories)
+const [loader,setLoader] =useState(false);
 
 const fetchalldata=async()=>{
   
   try{
+    setLoader(true)
   let data=await  getAllCategory();
   setCategories(data)
-  console.log(data)
+  setLoader(false)
   }catch(e){
     console.log(e)
+  setLoader(false)
+
     setCategories([])
 
   }
@@ -77,6 +83,7 @@ const fetchalldata=async()=>{
                     </div>
                 </div>
             </div>
+            <Spin spinning={loader}>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -116,6 +123,7 @@ const fetchalldata=async()=>{
                   
                 </tbody>
             </table>
+            </Spin>
             <div className='pagination'>
             <Pagination
         total={categories.length}
