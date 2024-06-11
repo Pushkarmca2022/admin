@@ -1,9 +1,56 @@
 // src/pages/Product.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './product.css'
 import { useNavigate } from 'react-router-dom';
+import { getAllProduct } from '../Api';
+import ActionDropdown from '../components/ActionDropdown';
 const Product = () => {
 const navigate=useNavigate()
+const [products,setProducts]=useState([])
+console.log('products',products)
+
+const fetchalldata=async()=>{
+  
+  try{
+  let data=await  getAllProduct();
+  setProducts(data)
+  console.log(data)
+  }catch(e){
+    console.log(e)
+    setProducts([])
+
+  }
+
+}
+
+  useEffect(()=>{
+    fetchalldata();
+  
+
+  },[])
+  const handleSelect = (eventKey,data) => {
+    console.log(eventKey)
+    switch(eventKey) {
+      case 'status':
+        // setCategories(categories?.map(category =>{
+        //     if(category._id==data._id){
+        //         return {...category,status:'InActive'}
+
+        //     }else{
+        //         return category
+        //     }
+        // }))
+        break;
+      case 'edit':
+        navigate('/AddProduct',{state:data})
+        break;
+      case 'delete':
+        setProducts(products?.filter(item=>item._id!==data?._id))
+        break;
+      default:
+        break;
+    }
+  };
   return(<>
 <div class="container-lg">
     <div class="table-responsive">
@@ -19,43 +66,40 @@ const navigate=useNavigate()
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Phone</th>
+                        <th>name</th>
+                        <th>categoryId</th>
+                        <th>price</th>
+                        <th>StockQuantity</th>
+                        <th>Description</th>
+
+
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John Doe</td>
-                        <td>Administration</td>
-                        <td>(171) 555-2222</td>
+                    {products?.map((item)=>{
+
+                        return (
+                            <>
+                             <tr>
+                        <td>{item?.name}</td>
+                         <td>{item?.categoryId?.name}</td>
+                        <td>{item?.price}</td>
+                        <td>{item?.stockQuantity}</td>
+                        <td>{item?.description}</td>
+
+                        
                         <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                      <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)}/>
+                           
                         </td>
                     </tr>
-                    <tr>
-                        <td>Peter Parker</td>
-                        <td>Customer Service</td>
-                        <td>(313) 555-5735</td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Fran Wilson</td>
-                        <td>Human Resources</td>
-                        <td>(503) 555-9931</td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>      
+                            </>
+                        )
+
+                    })}
+                   
+                        
                 </tbody>
             </table>
         </div>

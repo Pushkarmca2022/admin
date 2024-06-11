@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import './product.css'
 import { useNavigate } from 'react-router-dom';
 import { getAllCategory } from '../Api';
+import { carousalone} from '../assets';
+
 import ActionDropdown from '../components/ActionDropdown';
 const Category = () => {
 const navigate=useNavigate()
@@ -80,11 +82,16 @@ const fetchalldata=async()=>{
                     return(
                         <>
                         <tr>
-                        <td>{item?.name}</td>
-                        <td>{item?.parentId}</td>
-                        <td>{item?.description}</td>
-                        <td>{item?.status}</td>
-                      <td>
+                        <td>
+            <div className='inline-content'>
+              <img src={carousalone} alt="carousalone" className='round-image' />
+              {item?.name}
+            </div>
+          </td>
+          <td className='center-content'>{categories.filter((items)=>items?._id=== item?.parentId)[0]?.name}</td>
+          <td className='center-content'>{item?.description}</td>
+          <td className='center-content'>{item?.status}</td>
+                      <td className='center-content'>
                       <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)}/>
                       </td>
                         

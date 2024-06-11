@@ -7,6 +7,26 @@
     border-radius: 10px;
     background-color: #fff;
   }
+  .round-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Makes the image round */
+    object-fit: cover;  /* Ensures the image covers the entire element without distortion */
+  }
+  .center-content {
+    text-align: center; /* Centers the text horizontally */
+    vertical-align: middle; /* Centers the text vertically */
+  }
+  
+  .inline-content {
+    display: flex;
+    align-items: center; /* Vertically centers the items within the flex container */
+    /* justify-content: center; */
+  }
+  
+  .inline-content img {
+    margin-right: 10px; /* Adds space between the image and the text */
+  }
   
   @media (max-width: 576px) {
     .form-container {

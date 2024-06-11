@@ -81,7 +81,7 @@ const CategoryForm = () => {
       formDatas.append('name', formData?.categoryName);
       formDatas.append('description', formData?.categoryDescription);
       formDatas.append('image',formData?.categoryImages);
-      formDatas.append('categoryId', formData?.parentCategory);
+      formDatas.append('parentId', formData?.parentCategory);
       const response = await saveCategory(formDatas);
 
       setMessage('Category saved successfully');
