@@ -4,6 +4,8 @@ import './product.css'
 import { useNavigate } from 'react-router-dom';
 import { getAllProduct } from '../Api';
 import ActionDropdown from '../components/ActionDropdown';
+import { Pagination } from 'antd';
+
 const Product = () => {
 const navigate=useNavigate()
 const [products,setProducts]=useState([])
@@ -51,8 +53,20 @@ const fetchalldata=async()=>{
         break;
     }
   };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
+  const handlePageChange = (page, pageSize) => {
+    setCurrentPage(page);
+    setPageSize(pageSize);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentProducts = products.slice(startIndex, endIndex);
   return(<>
 <div class="container-lg">
+
     <div class="table-responsive">
         <div class="table-wrapper">
             <div class="table-title">
@@ -77,7 +91,7 @@ const fetchalldata=async()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {products?.map((item)=>{
+                    {currentProducts?.map((item)=>{
 
                         return (
                             <>
@@ -102,8 +116,22 @@ const fetchalldata=async()=>{
                         
                 </tbody>
             </table>
+            
+            <div className='pagination'>
+            <Pagination
+        total={products.length}
+        showTotal={(total) => `Total ${total} items`}
+        defaultPageSize={10}
+        defaultCurrent={1}
+        current={currentPage}
+        pageSize={pageSize}
+        onChange={handlePageChange}
+      />
+            
+            </div>
         </div>
     </div>
+    {/* </Spin> */}
 </div>     
   </>
   )

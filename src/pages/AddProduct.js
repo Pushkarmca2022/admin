@@ -1,8 +1,11 @@
 // src/components/CategoryForm.js
 import React, { useEffect, useState } from 'react';
 import './category.css';
-import { getAllCategory, saveCategory, saveProduct } from '../Api';
+import { getAllCategory,  saveProduct } from '../Api';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Image, Upload,Spin } from 'antd';
+
+import { PlusOutlined } from '@ant-design/icons';
 
 const ProductForm = () => {
   const navigate=useNavigate()
@@ -10,6 +13,7 @@ const ProductForm = () => {
 
   const data = location.state;
   const [id,setId]=useState()
+  const [loader,setLoader] =useState(false);
   console.log('data',data)
 
     const [formData, setFormData] = useState({
@@ -73,50 +77,96 @@ const ProductForm = () => {
       });
     }
   };
+  const [fileList, setFileList] = useState([
+    // {
+    //   uid: '-1',
+    //   name: 'image.png',
+    //   status: 'done',
+    //   url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    // },
+   
+  ]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoader(true)
       	
 
       // console.log(formData)
-      // const formDatas = new FormData();
-      // formDatas.append('name', formData?.categoryName);
-      // formDatas.append('description', formData?.categoryDescription);
-      // formDatas.append('image',formData?.categoryImages);
-      // formDatas.append('categoryId', formData?.parentCategory);
-      // formDatas.append('stockQuantity', formData?.stockQuantity);
-      // formDatas.append('price', formData?.price);
-     let nomaldata={
-      'name': formData?.categoryName,
-      'description': formData?.categoryDescription,
-      'image': formData?.categoryImages,
-      'categoryId': formData?.parentCategory,
-      'stockQuantity': formData?.stockQuantity,
-      'price': formData?.price
+      const formDatas = new FormData();
+      formDatas.append('name', formData?.categoryName);
+      formDatas.append('description', formData?.categoryDescription);
+      formDatas.append('image',fileList[0]?.originFileObj);
+      formDatas.append('categoryId', formData?.parentCategory);
+      formDatas.append('stockQuantity', formData?.stockQuantity);
+      formDatas.append('price', formData?.price);
+    //  let nomaldata={
+    //   'name': formData?.categoryName,
+    //   'description': formData?.categoryDescription,
+    //   'image': formData?.categoryImages,
+    //   'categoryId': formData?.parentCategory,
+    //   'stockQuantity': formData?.stockQuantity,
+    //   'price': formData?.price
 
-     }
-     console.log('nomaldata',nomaldata)
+    //  }
+    
 
 
       
 
 
-       const response = await saveProduct(nomaldata);
+       const response = await saveProduct(formDatas);
     //   setSubmittedData(formData);
+    setLoader(false)
+
       setMessage('Product saved successfully');
       setTimeout(() => {
         navigate('/product')
       },2000);
     } catch (error) {
+      setLoader(false)
+
       setMessage('Error saving Product');
     }
   };
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+ 
+  // const handlePreview = async (file) => {
+  //   if (!file.url && !file.preview) {
+  //     file.preview = await getBase64(file.originFileObj);
+  //   }
+  //   setPreviewImage(file.url || file.preview);
+  //   setPreviewOpen(true);
+  // };
+  console.log('fileList',fileList)
+  const handleChanges = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <button
+      style={{
+        border: 0,
+        background: 'none',
+      }}
+      type="button"
+    >
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        Upload
+      </div>
+    </button>
+  );
     
   return (
     <div className="container mt-5">
     <div className="form-container">
       <h2 className="text-center">Create Product</h2>
+<Spin spinning={loader}>
+      
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="parentCategory" className="form-label">select Category</label>
@@ -159,16 +209,7 @@ const ProductForm = () => {
           ></textarea>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="categoryImages" className="form-label">Images</label>
-          <input
-            className="form-control"
-            type="file"
-            id="categoryImages"
-            multiple
-            onChange={handleChange}
-          />
-        </div>
+       
         <div className="mb-3">
           <label htmlFor="categoryName" className="form-label">Price</label>
           <input
@@ -191,10 +232,38 @@ const ProductForm = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="mb-3">
+          <label htmlFor="categoryImages" className="form-label">Images</label>
+          
+          <Upload
+        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+        listType="picture-card"
+        fileList={fileList}
+        onPreview={()=>{}}
+        onChange={handleChanges}
+      >
+        {fileList.length >= 1 ? null : uploadButton}
+      </Upload>
+      {previewImage && (
+        <Image
+          wrapperStyle={{
+            display: 'none',
+          }}
+          preview={{
+            visible: previewOpen,
+            onVisibleChange: (visible) => setPreviewOpen(visible),
+            afterOpenChange: (visible) => !visible && setPreviewImage(''),
+          }}
+          src={previewImage}
+        />
+      )}
+        </div>
         
 
-        <button type="submit" className="btn btn-primary w-100">Submit</button>
+
+<button type="submit" className="btn btn-primary w-100">Submit</button>
       </form>
+      </Spin>
       {message && (
           <div className="mt-3 alert alert-info">
             {message}

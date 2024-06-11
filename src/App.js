@@ -18,6 +18,8 @@ function App() {
         <Sidebar />
         <div className="content">
           <Routes>
+          <Route path="/" element={<Dashboard />} />
+
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/user" element={<User />} />
             <Route path="/product" element={<Product />} />

@@ -1,11 +1,12 @@
 // src/pages/Product.js
 import React, { useEffect, useState } from 'react';
-import './product.css'
+import './category.css'
 import { useNavigate } from 'react-router-dom';
 import { getAllCategory } from '../Api';
 import { carousalone} from '../assets';
 
 import ActionDropdown from '../components/ActionDropdown';
+import { Pagination } from 'antd';
 const Category = () => {
 const navigate=useNavigate()
 const [categories,setCategories]=useState([])
@@ -53,6 +54,17 @@ const fetchalldata=async()=>{
         break;
     }
   };
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
+  const handlePageChange = (page, pageSize) => {
+    setCurrentPage(page);
+    setPageSize(pageSize);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentCategories = categories.slice(startIndex, endIndex);
   return(<>
 <div class="container-lg">
     <div class="table-responsive">
@@ -77,14 +89,14 @@ const fetchalldata=async()=>{
                     </tr>
                 </thead>
                 <tbody>
-                {categories?.map((item)=>{
+                {currentCategories?.map((item)=>{
 
                     return(
                         <>
                         <tr>
                         <td>
             <div className='inline-content'>
-              <img src={carousalone} alt="carousalone" className='round-image' />
+              <img src={item?.images?.[0] ? item.images[0] : carousalone}  alt="carousalone" className='round-image' />
               {item?.name}
             </div>
           </td>
@@ -101,38 +113,20 @@ const fetchalldata=async()=>{
                     )
 
                 })}
-                    {/* <tr>
-                        <td>John Doe</td>
-                        <td>Administration</td>
-                        <td>(171) 555-2222</td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Peter Parker</td>
-                        <td>Customer Service</td>
-                        <td>(313) 555-5735</td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Fran Wilson</td>
-                        <td>Human Resources</td>
-                        <td>(503) 555-9931</td>
-                        <td>
-                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>       */}
+                  
                 </tbody>
             </table>
+            <div className='pagination'>
+            <Pagination
+        total={categories.length}
+        showTotal={(total) => `Total ${total} items`}
+        defaultPageSize={10}
+        defaultCurrent={1}
+        current={currentPage}
+        pageSize={pageSize}
+        onChange={handlePageChange}
+      />
+            </div>
         </div>
     </div>
 </div>     

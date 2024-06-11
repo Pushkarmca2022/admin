@@ -27,6 +27,11 @@
   .inline-content img {
     margin-right: 10px; /* Adds space between the image and the text */
   }
+  .pagination{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+  }
   
   @media (max-width: 576px) {
     .form-container {

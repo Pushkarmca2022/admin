@@ -49,7 +49,9 @@ export const saveProduct = async (productData) => {
     //  const response = await axios.post(`${API_URL}/cat`, categoryData);
      const response = await axios.post(`${API_URL}/products`, productData, {
       headers: {
-        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
+
       }
     });
     return null //response.data;
