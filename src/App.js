@@ -7,6 +7,7 @@ import User from './pages/User';
 import Product from './pages/Product';
 import AddCategory from './pages/AddCategory';
 import Category from './pages/Category';
+import AddProduct from './pages/AddProduct';
 
 import './App.css';  // Add some basic styling
 
@@ -21,6 +22,9 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/product" element={<Product />} />
             <Route path="/addCategory" element={<AddCategory />} />
+            <Route path="/addProduct" element={<AddProduct />} />
+
+            
 
             <Route path="/category" element={<Category />} />
 

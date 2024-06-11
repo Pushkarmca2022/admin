@@ -12,7 +12,7 @@ const navigate=useNavigate()
                 <div class="row">
                     <div class="col-sm-8"><h2>Product <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new" onClick={()=>{navigate('/addCategory')}}><i class="fa fa-plus"></i> Add New</button>
+                        <button type="button" class="btn btn-info add-new" onClick={()=>{navigate('/addProduct')}}><i class="fa fa-plus"></i> Add New</button>
                     </div>
                 </div>
             </div>

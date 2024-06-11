@@ -1,57 +1,15 @@
 // src/components/CategoryForm.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './category.css';
-import { getAllCategory, saveCategory } from '../Api';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { saveCategory } from '../Api';
 
-const CategoryForm = () => {
-  const navigate=useNavigate()
-  const location = useLocation();
-  const data = location.state;
- 
-  const [categories,setCategories]=useState([])
-  const [id,setId]=useState()
-  const [formData, setFormData] = useState({
-    parentCategory: '',
-    categoryName: '',
-    categoryDescription: '',
-    categoryImages: [],
-  });
-  console.log('categories',categories)
-
-  const fetchalldata=async()=>{
-    
-    try{
-    let data=await  getAllCategory();
-    setCategories(data)
-    console.log(data)
-    }catch(e){
-      console.log(e)
-      setCategories([])
-
-    }
-  
-  }
-
-    useEffect(()=>{
-      fetchalldata();
-    
-  
-    },[])
-    useEffect(() => {
-      if (data) {
-        setFormData({
-          parentCategory: data.parentId || '',
-          categoryName: data.name || '',
-          categoryDescription: data.description || '',
-          categoryImages: data.images || [],
-        });
-        setId(data._id)
-      }
-    }, [data]);
-
-
-   
+const ProductForm = () => {
+    const [formData, setFormData] = useState({
+        parentCategory: '',
+        categoryName: '',
+        categoryDescription: '',
+        categoryImages: [],
+      });
       const [message, setMessage] = useState('');
      
 
@@ -73,21 +31,9 @@ const CategoryForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-     
- 
-
-
-      const formDatas = new FormData();
-      formDatas.append('name', formData?.categoryName);
-      formDatas.append('description', formData?.categoryDescription);
-      formDatas.append('image',formData?.categoryImages);
-      formDatas.append('categoryId', formData?.parentCategory);
-      const response = await saveCategory(formDatas);
-
+      const response = await saveCategory(formData);
+    //   setSubmittedData(formData);
       setMessage('Category saved successfully');
-      setTimeout(() => {
-        navigate('/category')
-      },3000);
     } catch (error) {
       setMessage('Error saving category');
     }
@@ -96,7 +42,7 @@ const CategoryForm = () => {
   return (
     <div className="container mt-5">
     <div className="form-container">
-      <h2 className="text-center">{id?'Update Category':'Create Category'}</h2>
+      <h2 className="text-center">Create Product</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="parentCategory" className="form-label">Parent Category</label>
@@ -107,12 +53,9 @@ const CategoryForm = () => {
             onChange={handleChange}
           >
             <option value="">Select parent category</option>
-            {categories.map((item) =>(
-
-              <option value={item?._id}>{item?.name}</option>
-            )
-            )}
-         
+            <option value="1">Category 1</option>
+            <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
           </select>
         </div>
 
@@ -165,4 +108,4 @@ const CategoryForm = () => {
   );
 };
 
-export default CategoryForm;
+export default ProductForm;

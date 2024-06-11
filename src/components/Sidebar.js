@@ -18,7 +18,7 @@
 // src/components/Sidebar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { FaTachometerAlt, FaUser, FaBox } from 'react-icons/fa';
+import { FaTachometerAlt, FaUser, FaBox } from 'react-icons/fa';
 import './Sidebar.css';  // Add a separate CSS file for sidebar styling
 
 const Sidebar = () => {
@@ -27,25 +27,25 @@ const Sidebar = () => {
       <ul>
         <li>
           <Link to="/dashboard">
-            {/* <FaTachometerAlt className="icon" /> */}
+            <FaTachometerAlt className="icon" />
             <span>Dashboard</span>
           </Link>
         </li>
         <li>
           <Link to="/category">
-            {/* <FaBox className="icon" /> */}
+            <FaBox className="icon" />
             <span>Category</span>
           </Link>
         </li>
         <li>
           <Link to="/product">
-            {/* <FaBox className="icon" /> */}
+            <FaBox className="icon" />
             <span>Product</span>
           </Link>
         </li>
         <li>
           <Link to="/user">
-            {/* <FaUser className="icon" /> */}
+            <FaUser className="icon" />
             <span>User</span>
           </Link>
         </li>

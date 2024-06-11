@@ -1,9 +1,56 @@
 // src/pages/Product.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './product.css'
 import { useNavigate } from 'react-router-dom';
+import { getAllCategory } from '../Api';
+import ActionDropdown from '../components/ActionDropdown';
 const Category = () => {
 const navigate=useNavigate()
+const [categories,setCategories]=useState([])
+console.log('categories',categories)
+
+const fetchalldata=async()=>{
+  
+  try{
+  let data=await  getAllCategory();
+  setCategories(data)
+  console.log(data)
+  }catch(e){
+    console.log(e)
+    setCategories([])
+
+  }
+
+}
+
+  useEffect(()=>{
+    fetchalldata();
+  
+
+  },[])
+  const handleSelect = (eventKey,data) => {
+    console.log(eventKey)
+    switch(eventKey) {
+      case 'status':
+        setCategories(categories?.map(category =>{
+            if(category._id==data._id){
+                return {...category,status:'InActive'}
+
+            }else{
+                return category
+            }
+        }))
+        break;
+      case 'edit':
+        navigate('/AddCategory',{state:data})
+        break;
+      case 'delete':
+         setCategories(categories?.filter(item=>item._id!==data?._id))
+        break;
+      default:
+        break;
+    }
+  };
   return(<>
 <div class="container-lg">
     <div class="table-responsive">
@@ -20,13 +67,34 @@ const navigate=useNavigate()
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Department</th>
-                        <th>Phone</th>
+                        <th>parentCategory</th>
+                        <th>Description</th>
+                        <th>Status</th>
+
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                {categories?.map((item)=>{
+
+                    return(
+                        <>
+                        <tr>
+                        <td>{item?.name}</td>
+                        <td>{item?.parentId}</td>
+                        <td>{item?.description}</td>
+                        <td>{item?.status}</td>
+                      <td>
+                      <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)}/>
+                      </td>
+                        
+                      
+                    </tr> 
+                        </>
+                    )
+
+                })}
+                    {/* <tr>
                         <td>John Doe</td>
                         <td>Administration</td>
                         <td>(171) 555-2222</td>
@@ -55,7 +123,7 @@ const navigate=useNavigate()
                             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
-                    </tr>      
+                    </tr>       */}
                 </tbody>
             </table>
         </div>
