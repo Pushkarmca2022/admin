@@ -1,8 +1,8 @@
 // src/api/categoryApi.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:9000/api/v1'; 
-// const API_URL ='https://zepto-backends.onrender.com/api/v1'
+//const API_URL = 'http://localhost:9000/api/v1'; 
+ const API_URL ='https://zepto-backends.onrender.com/api/v1'
 export const fetchData = async () => {
   try {
     const response = await axios.get(`${API_URL}/all`);
