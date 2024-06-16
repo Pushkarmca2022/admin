@@ -163,7 +163,7 @@ const ProductForm = () => {
     
   return (
     <div className="container mt-5">
-    <div className="form-container">
+    <div className="form-container boderrdish">
       <h2 className="text-center">Create Product</h2>
 <Spin spinning={loader}>
       

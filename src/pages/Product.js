@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAllProduct } from '../Api';
 import ActionDropdown from '../components/ActionDropdown';
 import { Pagination, Spin } from 'antd';
+import Header from '../components/Header';
 
 const Product = () => {
 const navigate=useNavigate()
@@ -71,26 +72,27 @@ const fetchalldata=async()=>{
   const endIndex = startIndex + pageSize;
   const currentProducts = products.slice(startIndex, endIndex);
   return(<>
-<div class="container-lg">
+{/* <div class="container-lg"> */}
+<Header title='Product'/>
 
     <div class="table-responsive">
-        <div class="table-wrapper">
+        <div class="table-wrapper boderrdish">
             <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8"><h2>Product <b>Details</b></h2></div>
-                    <div class="col-sm-4">
+                <div class="row ">
+                    {/* <div class="col-sm-8"><h2>Product <b>Details</b></h2></div> */}
+                    <div class="col-sm-12 d-flex align-items-end justify-content-end">
                         <button type="button" class="btn btn-info add-new" onClick={()=>{navigate('/addProduct')}}><i class="fa fa-plus"></i> Add New</button>
                     </div>
                 </div>
             </div>
       <Spin spinning={loader}>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered shdow">
                 <thead>
                     <tr>
-                        <th>name</th>
-                        <th>categoryId</th>
-                        <th>price</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
                         <th>StockQuantity</th>
                         <th>Description</th>
 
@@ -140,7 +142,7 @@ const fetchalldata=async()=>{
         </div>
     </div>
     {/* </Spin> */}
-</div>     
+{/* </div>      */}
   </>
   )
 };

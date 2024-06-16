@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import './dashboard.css'
 import { fetchData } from '../Api';
-
+import { FaUser, FaEnvelope, FaBell } from 'react-icons/fa';
+import Header from '../components/Header';
 const Dashboard = () => {
   const [data,setData]=useState({})
 const fetchalldata=async()=>{
@@ -23,8 +24,20 @@ const fetchalldata=async()=>{
   },[])
   return(<>
 <div className="container bootstrap snippets bootdey">
-  <div className="row">
-    <div className="col-lg-3 col-sm-6">
+<Header/>
+  {/* <div className="row">
+    <div className='col-sm-6'>
+
+<p>Dashboard</p>
+    </div>
+    <div className='col-sm-6'>
+
+       <p>Username</p>
+    </div>
+
+  </div> */}
+  <div className="row ">
+    <div className="col-lg-3 col-sm-6 shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading dark-blue"><i className="fa fa-users fa-fw fa-3x"></i></div></a>
         <div className="circle-tile-content dark-blue">
@@ -34,7 +47,7 @@ const fetchalldata=async()=>{
       </div>
     </div>
      
-    <div className="col-lg-3 col-sm-6">
+    <div className="col-lg-3 col-sm- shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading red"><i class="fa-brands fa-product-hunt fa-3x"></i></div></a>
         <div className="circle-tile-content red">
@@ -44,7 +57,7 @@ const fetchalldata=async()=>{
       </div>
     </div> 
      
-    <div className="col-lg-3 col-sm-6">
+    <div className="col-lg-3 col-sm- shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading yellow "><i className="fa-light fa-table  fa-3x"></i></div></a>
         <div className="circle-tile-content yellow">
@@ -54,7 +67,7 @@ const fetchalldata=async()=>{
       </div>
     </div> 
      
-    <div className="col-lg-3 col-sm-6">
+    <div className="col-lg-3 col-sm- shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading orange"><i className="fa fa-comments fa-fw fa-3x"></i></div></a>
         <div className="circle-tile-content orange">

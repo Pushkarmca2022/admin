@@ -1,0 +1,41 @@
+.dashboard-header {
+    background-color: #f8f9fa; /* Light grey background color */
+    /* padding: 5px 10px ; */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
+    /* margin-bottom: 20px; */
+  }
+.row {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .col-sm-6 {
+    flex: 0 0 50%;
+  }
+  
+  .text-end {
+    text-align: end;
+  }
+  
+  .d-inline-block {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+  
+  .me-2 {
+    margin-right: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  

@@ -2,13 +2,21 @@
 .sidebar {
     width: 200px;
     background-color: #f4f4f4;
-    padding: 20px;
+    /* padding: 20px; */
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+  .sidebar-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
   }
   
   .sidebar ul {
     list-style: none;
     padding: 0;
+    margin-top: 50px !important;
   }
   
   .sidebar ul li {
@@ -29,5 +37,24 @@
   
   .sidebar ul li a span {
     font-size: 1em;
+  }
+  .sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar .icon {
+    margin-right: 10px;
+  }
+  
+  .sidebar .active {
+    font-weight: bold;
+    color: #007bff;
+  }
+  .logo{
+    margin: 10px;
+
   }
   

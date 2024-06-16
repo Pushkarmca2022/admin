@@ -1,8 +1,15 @@
 // src/pages/User.js
 import React from 'react';
+import Header from '../components/Header';
 
 const User = () => {
-  return <h1>User Page</h1>;
+  return (
+    <>
+    <div class="container-lg">
+    <Header title='User'/>
+    </div>
+    </>
+  );
 };
 
 export default User;

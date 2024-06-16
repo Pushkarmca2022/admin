@@ -3,6 +3,7 @@
   display: flex;
 }
 
+
 .sidebar {
   width: 200px;
   /* margin-top: 200px; */
@@ -19,3 +20,12 @@
   flex: 1;
   padding: 20px;
 }
+.shdow{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  }
+
+  .boderrdish{
+    border-radius: 10px;
+
+  }
