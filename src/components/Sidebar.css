@@ -1,8 +1,11 @@
 /* src/components/Sidebar.css */
 .sidebar {
-    width: 200px;
+    width: 200p;
     background-color: #f4f4f4;
     /* padding: 20px; */
+    min-height: 100%;
+    padding: 10px;
+    padding-left: 13px;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   }
   .sidebar-heading {
@@ -16,6 +19,7 @@
   .sidebar ul {
     list-style: none;
     padding: 0;
+    
     margin-top: 50px !important;
   }
   
@@ -27,6 +31,7 @@
     text-decoration: none;
     color: #333;
     display: flex;
+    padding-left: 6px;
     align-items: center;
   }
   
@@ -51,7 +56,13 @@
   
   .sidebar .active {
     font-weight: bold;
-    color: #007bff;
+    /* color: #007bff;
+     */
+     /* color: teal; */
+     background: teal;
+    padding: 6px;
+    border-radius: 10px;
+    color: white;
   }
   .logo{
     margin: 10px;

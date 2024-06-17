@@ -81,7 +81,7 @@ const fetchalldata=async()=>{
                 <div class="row ">
                     {/* <div class="col-sm-8"><h2>Product <b>Details</b></h2></div> */}
                     <div class="col-sm-12 d-flex align-items-end justify-content-end">
-                        <button type="button" class="btn btn-info add-new" onClick={()=>{navigate('/addProduct')}}><i class="fa fa-plus"></i> Add New</button>
+                        <button type="button" class="btn btn-info add-new colorteal colorwhite buttiondesign" onClick={()=>{navigate('/addProduct')}}><i class="fa fa-plus"></i> Add New</button>
                     </div>
                 </div>
             </div>
@@ -90,14 +90,14 @@ const fetchalldata=async()=>{
             <table class="table table-bordered shdow">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>StockQuantity</th>
-                        <th>Description</th>
+                        <th className='textAlign'>Name</th>
+                        <th className='textAlign'>Category</th>
+                        <th className='textAlign'>Price</th>
+                        <th className='textAlign'>StockQuantity</th>
+                        <th className='textAlign'>Description</th>
 
 
-                        <th>Actions</th>
+                        <th className='actionclass'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,14 +106,14 @@ const fetchalldata=async()=>{
                         return (
                             <>
                              <tr>
-                        <td>{item?.name}</td>
-                         <td>{item?.categoryId?.name}</td>
-                        <td>{item?.price}</td>
-                        <td>{item?.stockQuantity}</td>
-                        <td>{item?.description}</td>
+                        <td className='textAlign'>{item?.name}</td>
+                         <td className='textAlign'>{item?.categoryId?.name}</td>
+                        <td className='textAlign'>{item?.price}</td>
+                        <td className='textAlign'>{item?.stockQuantity}</td>
+                        <td className='textAlign'>{item?.description}</td>
 
                         
-                        <td>
+                        <td className='actionclass'> 
                       <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)}/>
                            
                         </td>

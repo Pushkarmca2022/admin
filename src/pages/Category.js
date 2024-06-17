@@ -82,7 +82,7 @@ const fetchalldata=async()=>{
                 <div class="row ">
                     {/* <div class="col-sm-8"><h2>Category <b>Details</b></h2></div> */}
                     <div class="col-sm-12 d-flex align-items-end justify-content-end ">
-                        <button type="button" class="btn btn-info add-new" onClick={()=>{navigate('/addCategory')}}><i class="fa fa-plus"></i> Add New</button>
+                        <button type="button" class="btn btn-info add-new colorteal colorwhite buttiondesign" onClick={()=>{navigate('/addCategory')}}><i class="fa fa-plus"></i> Add New</button>
                     </div>
                 </div>
             </div>
@@ -90,13 +90,13 @@ const fetchalldata=async()=>{
             <table class="table table-bordered shdow ">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>
+                        <th className='textAlign'>Name</th>
+                        <th className='textAlign'>
                           ParentCategory</th>
-                        <th>Description</th>
-                        <th>Status</th>
+                        <th className='textAlign'>Description</th>
+                        <th className='textAlign' style={{ width: '100px' }}>Status</th>
                        
-                        <th>Actions</th>
+                        <th className='actionclass'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

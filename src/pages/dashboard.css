@@ -146,4 +146,10 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
+  @media (min-width: 992px) {
+    .col-lg-custome {
+        flex: 0 0 auto;
+        width: 24% !important;
+    }
+}
   

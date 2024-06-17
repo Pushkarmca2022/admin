@@ -76,3 +76,12 @@ table.table .form-control.error {
 table.table td .add {
     display: none;
 }
+.actionclass{
+    width: 150px !important;
+
+    text-align: center ;
+
+}
+.textAlign{
+text-align: center;
+}

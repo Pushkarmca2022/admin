@@ -18,7 +18,8 @@
 
 .content {
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 20px 20px 0px 20px;
 }
 .shdow{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -28,4 +29,19 @@
   .boderrdish{
     border-radius: 10px;
 
+  }
+  .colorteal{
+    background-color: teal !important;
+  }
+  .colorwhite{
+    color: white !important;
+  }
+  .clorebackwhite{
+    background-color: white !important;
+  }
+  .buttiondesign{
+    padding: 8px 29px !important;
+    text-align: center;
+   
+    min-height: 45px;
   }

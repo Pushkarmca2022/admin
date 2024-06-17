@@ -32,7 +32,15 @@
     justify-content: end;
     align-items: end;
   }
- 
+  .actionclass{
+    width: 150px !important;
+
+    text-align: center !important;
+
+}
+.textAlign{
+text-align: center;
+}
  
   
   @media (max-width: 576px) {

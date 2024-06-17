@@ -6,7 +6,7 @@ const ActionDropdown = ({handleSelectevent}) => {
 
   return (
     <Dropdown onSelect={handleSelectevent}>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle variant="success" className='colorteal' id="dropdown-basic">
         Actions
       </Dropdown.Toggle>
 

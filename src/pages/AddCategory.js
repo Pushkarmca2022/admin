@@ -141,7 +141,7 @@ const CategoryForm = () => {
   return (
     <div className="container mt-5">
     <div className="form-container">
-      <h2 className="text-center">{id?'Update Category':'Create Category'}</h2>
+      <h4 className="text-center">{id?'Update Category':'Create Category'}</h4>
       <Spin spinning={loader}>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -219,7 +219,7 @@ const CategoryForm = () => {
       )}
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">Submit</button>
+        <button type="submit" className="btn btn-primary w-100 colorteal">Submit</button>
       </form>
       </Spin>
       {message && (
