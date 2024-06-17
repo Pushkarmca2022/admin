@@ -17,6 +17,7 @@
 }
 .circle-tile-content {
     padding-top: 50px;
+        border-radius: 5px 5px 10px 10px
 }
 .circle-tile-number {
     font-size: 26px;

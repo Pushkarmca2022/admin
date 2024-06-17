@@ -45,3 +45,8 @@
    
     min-height: 45px;
   }
+  .textdesign{
+    font-weight: 700 !important;
+    text-transform: capitalize;
+    font-size: 14px;
+  }

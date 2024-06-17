@@ -37,7 +37,7 @@ const fetchalldata=async()=>{
 
   </div> */}
   <div className="row ">
-    <div className="col-lg-3 col-lg-custome m-1 col-sm-6 clorebackwhite shdow">
+    <div className="col-lg-3 col-lg-custome m-1 col-sm-6 clorebackwhite circle-tile-content shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading dark-blue"><i className="fa fa-users fa-fw fa-3x"></i></div></a>
         <div className="circle-tile-content dark-blue">
@@ -47,7 +47,7 @@ const fetchalldata=async()=>{
       </div>
     </div>
      
-    <div className="col-lg-3 col-lg-custome col-sm-6 clorebackwhite   shdow">
+    <div className="col-lg-3 col-lg-custome col-sm-6 clorebackwhite  circle-tile-content shdow">
       <div className="circle-tile  ">
         <a href="#"><div className="circle-tile-heading red"><i class="fa-brands fa-product-hunt fa-3x"></i></div></a>
         <div className="circle-tile-content red">
@@ -57,7 +57,7 @@ const fetchalldata=async()=>{
       </div>
     </div> 
      
-    <div className="col-lg-3 col-lg-custome col-sm-6  clorebackwhite shdow">
+    <div className="col-lg-3 col-lg-custome col-sm-6 circle-tile-content clorebackwhite shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading yellow "><i className="fa-light fa-table  fa-3x"></i></div></a>
         <div className="circle-tile-content yellow">
@@ -67,7 +67,7 @@ const fetchalldata=async()=>{
       </div>
     </div> 
      
-    <div className="col-lg-3 col-lg-custome col-sm-6  clorebackwhite shdow">
+    <div className="col-lg-3 col-lg-custome col-sm-6 circle-tile-content  clorebackwhite shdow">
       <div className="circle-tile ">
         <a href="#"><div className="circle-tile-heading orange"><i className="fa fa-comments fa-fw fa-3x"></i></div></a>
         <div className="circle-tile-content orange">

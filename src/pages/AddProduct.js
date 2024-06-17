@@ -169,7 +169,7 @@ const ProductForm = () => {
       
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="parentCategory" className="form-label">select Category</label>
+          <label htmlFor="parentCategory" className="form-label textdesign">select Category</label>
           <select
             className="form-select"
             id="parentCategory"
@@ -198,7 +198,7 @@ const ProductForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="categoryDescription" className="form-label">Product Description</label>
+          <label htmlFor="categoryDescription" className="form-label textdesign">Product Description</label>
           <textarea
             className="form-control"
             id="categoryDescription"
@@ -211,7 +211,7 @@ const ProductForm = () => {
 
        
         <div className="mb-3">
-          <label htmlFor="categoryName" className="form-label">Price</label>
+          <label htmlFor="categoryName" className="form-label textdesign">Price</label>
           <input
             type="text"
             className="form-control"
@@ -222,7 +222,7 @@ const ProductForm = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="categoryName" className="form-label">Stock Quantity</label>
+          <label htmlFor="categoryName" className="form-label textdesign">Stock Quantity</label>
           <input
             type="text"
             className="form-control"
@@ -233,7 +233,7 @@ const ProductForm = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="categoryImages" className="form-label">Images</label>
+          <label htmlFor="categoryImages" className="form-label textdesign">Images</label>
           
           <Upload
         action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"

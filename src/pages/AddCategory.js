@@ -145,7 +145,7 @@ const CategoryForm = () => {
       <Spin spinning={loader}>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="parentCategory" className="form-label">Parent Category</label>
+          <label htmlFor="parentCategory" className="form-label textdesign">Parent Category</label>
           <select
             className="form-select"
             id="parentCategory"
@@ -163,7 +163,7 @@ const CategoryForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="categoryName" className="form-label">Category Name</label>
+          <label htmlFor="categoryName" className="form-label textdesign">Category Name</label>
           <input
             type="text"
             className="form-control"
@@ -175,7 +175,7 @@ const CategoryForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="categoryDescription" className="form-label">Category Description</label>
+          <label htmlFor="categoryDescription" className="form-label textdesign">Category Description</label>
           <textarea
             className="form-control"
             id="categoryDescription"
