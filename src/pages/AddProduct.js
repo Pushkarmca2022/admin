@@ -123,7 +123,7 @@ const ProductForm = () => {
       setMessage('Product saved successfully');
       setTimeout(() => {
         navigate('/product')
-      },2000);
+      },1000);
     } catch (error) {
       setLoader(false)
 
