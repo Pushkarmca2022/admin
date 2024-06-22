@@ -40,14 +40,20 @@
 // };
 
 // export default Sidebar;
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FaTachometerAlt, FaUser, FaBox } from 'react-icons/fa';
 import './Sidebar.css';  
 
 const Sidebar = () => {
+  const location = useLocation();
+  const [isDashboardRoute, setIsDashboardRoute] = useState(false);
+
+  useEffect(() => {
+    setIsDashboardRoute(location.pathname === '/dashboard');
+  }, [location]);
   return (
-    <div className="sidebar shdow">
+    <div className={isDashboardRoute ? 'sidebar shdow addheight ' : 'sidebar shdow'} >
       <h1 className="sidebar-heading ">Zetop</h1>
       <ul>
         <li>

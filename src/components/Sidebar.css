@@ -7,6 +7,9 @@
     text-align: center;
     color: #333;
   }
+  .addheight{
+    height: 100vh;
+  }
   
   .sidebar ul {
     list-style: none;
