@@ -9,6 +9,7 @@ import ActionDropdown from '../components/ActionDropdown';
 import { Pagination } from 'antd';
 import { Spin } from 'antd';
 import Header from '../components/Header';
+import { get30char } from '../Api/function';
 
 const Category = () => {
 const navigate=useNavigate()
@@ -112,7 +113,7 @@ const fetchalldata=async()=>{
             </div>
           </td>
           <td className='center-content'>{categories.filter((items)=>items?._id=== item?.parentId)[0]?.name}</td>
-          <td className='center-content'>{item?.description}</td>
+          <td className='center-content'>{get30char(item?.description)}</td>
           <td className='center-content'>{item?.status}</td>
                       <td className='center-content'>
                       <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)}/>

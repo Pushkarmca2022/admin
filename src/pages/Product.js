@@ -6,6 +6,8 @@ import { getAllProduct } from '../Api';
 import ActionDropdown from '../components/ActionDropdown';
 import { Pagination, Spin } from 'antd';
 import Header from '../components/Header';
+import { get30char } from '../Api/function';
+import { carousalone} from '../assets';
 
 const Product = () => {
 const navigate=useNavigate()
@@ -106,11 +108,17 @@ const fetchalldata=async()=>{
                         return (
                             <>
                              <tr>
-                        <td className='textAlign'>{item?.name}</td>
+                        <td className='textAlign'>
+
+                        <div className='inline-content'>
+              <img src={item?.images?.[0] ? item.images[0] : carousalone}  alt="carousalone" className='round-image' />
+              {item?.name}
+            </div>
+                        </td>
                          <td className='textAlign'>{item?.categoryId?.name}</td>
                         <td className='textAlign'>{item?.price}</td>
                         <td className='textAlign'>{item?.stockQuantity}</td>
-                        <td className='textAlign'>{item?.description}</td>
+                        <td className='textAlign'>{get30char(item?.description)}</td>
 
                         
                         <td className='actionclass'> 

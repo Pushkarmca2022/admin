@@ -1,13 +1,5 @@
 /* src/components/Sidebar.css */
-.sidebar {
-    width: 200p;
-    background-color: #f4f4f4;
-    /* padding: 20px; */
-    min-height: 100%;
-    padding: 10px;
-    padding-left: 13px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  }
+
   .sidebar-heading {
     font-size: 24px;
     font-weight: bold;

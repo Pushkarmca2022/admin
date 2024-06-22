@@ -41,6 +41,15 @@ export const getAllCategory = async () => {
   }
 };
 
+export const getAllUsers=async()=>{
+  try{
+    const response = await axios.get(`${API_URL}/user`)
+    return response?.data
+  }catch (err) {
+    console.log(err)
+  }
+}
+
 
 
 
