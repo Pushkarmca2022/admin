@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
 
-const ActionDropdown = ({handleSelectevent}) => {
+const ActionDropdown = ({handleSelectevent,remote=0}) => {
  
 
   return (
@@ -11,9 +11,9 @@ const ActionDropdown = ({handleSelectevent}) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item eventKey="status">
+      {!remote&&  <Dropdown.Item eventKey="status">
           <i className="material-icons">&#xE03B;</i> status
-        </Dropdown.Item>
+        </Dropdown.Item>}
         <Dropdown.Item eventKey="edit">
           <i className="material-icons">&#xE254;</i> Edit
         </Dropdown.Item>

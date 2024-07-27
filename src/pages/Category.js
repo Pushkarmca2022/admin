@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import './category.css'
 import { useNavigate } from 'react-router-dom';
-import { getAllCategory } from '../Api';
+import { deleteCategory, getAllCategory, updateCategoryStatus } from '../Api';
 import { carousalone} from '../assets';
 
 import ActionDropdown from '../components/ActionDropdown';
@@ -39,13 +39,15 @@ const fetchalldata=async()=>{
   
 
   },[])
-  const handleSelect = (eventKey,data) => {
+  const handleSelect = async(eventKey,data) => {
     console.log(eventKey)
     switch(eventKey) {
       case 'status':
+        let statusupdate=data?.status=='active'?'inactive':'active'
+        updateCategoryStatus(data._id,statusupdate)
         setCategories(categories?.map(category =>{
             if(category._id==data._id){
-                return {...category,status:'InActive'}
+                return {...category,status:statusupdate}
 
             }else{
                 return category
@@ -56,6 +58,7 @@ const fetchalldata=async()=>{
         navigate('/AddCategory',{state:data})
         break;
       case 'delete':
+           await deleteCategory(data?._id)
          setCategories(categories?.filter(item=>item._id!==data?._id))
         break;
       default:

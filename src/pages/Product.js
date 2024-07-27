@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import './product.css'
 import { useNavigate } from 'react-router-dom';
-import { getAllProduct } from '../Api';
+import { deleteProduct, getAllProduct } from '../Api';
 import ActionDropdown from '../components/ActionDropdown';
 import { Pagination, Spin } from 'antd';
 import Header from '../components/Header';
@@ -39,7 +39,7 @@ const fetchalldata=async()=>{
   
 
   },[])
-  const handleSelect = (eventKey,data) => {
+  const handleSelect = async(eventKey,data) => {
     console.log(eventKey)
     switch(eventKey) {
       case 'status':
@@ -56,6 +56,7 @@ const fetchalldata=async()=>{
         navigate('/AddProduct',{state:data})
         break;
       case 'delete':
+        await deleteProduct(data?._id)
         setProducts(products?.filter(item=>item._id!==data?._id))
         break;
       default:
@@ -122,7 +123,7 @@ const fetchalldata=async()=>{
 
                         
                         <td className='actionclass'> 
-                      <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)}/>
+                      <ActionDropdown handleSelectevent={(event)=>handleSelect(event,item)} remote={1}/>
                            
                         </td>
                     </tr>
